@@ -6,7 +6,7 @@
 
     <meta charset="UTF-8" />
 
-    <title>Hello, world!</title>
+    <title>Renewable Energy Potential in Africa</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
     <link rel="stylesheet" type="text/css" href="styles.css" />
@@ -17,23 +17,32 @@
 </head>
 
 <body>
-    
-    <h1>This is a map</h1>
-    <div id="map"></div>
+    <div id = "map-header">
+        <h1>This is Africa</h1>
+    </div>
+    <div id="map">
 
-    <script src="africa-outline-with-countries_6.js"></script>
-    <script src="map.js"></script>
+        <script src="africa-outline-with-countries_6.js"></script>
+        <script src="map.js"></script>
 
-    <h5> Display Layer </h5>
+    </div>
+    <div id = "display-controls">
+        <h5> Display Layer </h5>
+        <div class = display-button>
+            <input type="radio" id="html" name="layer" value="wind_spd">
+            <label for="wind_spd"> Wind Speed </label> <br/>
+        </div>
 
-    <input type="radio" id="html" name="layer" value="wind_spd">
-    <label for="wind_spd"> Wind Speed </label> <br/>
+        <div class=display-button>
+        <input type="radio" id="html" name="layer" value="solar_rad">
+        <label for="solar_rad"> Solar Irradiance </label> <br/>
+        </div>
 
-    <input type="radio" id="html" name="layer" value="solar_rad">
-    <label for="solar_rad"> Solar Radiation </label> <br/>
-    
-    <input type="radio" id="html" name="layer" value="population">
-    <label for="population"> Population </label> <br/>
+        <div class=display-button>
+        <input type="radio" id="html" name="layer" value="population">
+        <label for="population"> Population </label> <br/>
+        </div>
+    <div>
 </body>
 
 </html>

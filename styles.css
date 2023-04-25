@@ -1,4 +1,26 @@
 #map {
     height: 75vh;
-    width: 85vw;
+    width: 100vw;
+    margin:auto;
+}
+
+#map-header{
+    text-align: center;
+    background-color: #50C878;
+    width:100vw;
+    margin-top: 0%;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+#display-controls{
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    background-color: aliceblue;
+}
+
+.display-button{
+    flex-direction: column;
+    margin:auto;
 }
