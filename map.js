@@ -26,6 +26,16 @@ let layerDict = {};
 
 console.log(countriesLayer);
 
+// Earthquakes and tsunami markers
+disasters.forEach((dis) => {
+    L.marker([dis['lat'], dis['lon']]).addTo(map).bindPopup(dis['info']);
+});
+
+// Hurricane polylines
+hurricanes.forEach((hur) => {
+    L.polyline(hur['path'], {color: 'orange'}).addTo(map);
+});
+
 countriesLayer.eachLayer((layer) => {
     let layerID = countriesLayer.getLayerId(layer);
     if (layer.feature.properties.iso_a3 == "-99") {
