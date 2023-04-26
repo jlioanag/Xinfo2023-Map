@@ -65,21 +65,17 @@ let colorToHue = {
 
 let highlightSelectedCountries = (countryData, hue) => {
     countriesLayer.eachLayer((layer) => {
-        let layerCountryCode = layer.feature.properties.iso_a3;
-        if (layer.feature.properties.iso_a3 == "-99") {
-            layerCountryCode = layer.feature.properties.sov_a3;
-        }
+        let layerCountryCode = layer.feature.properties.name;
         
         let saturation = 0
         if (layerCountryCode in countryData) {
             saturation = countryData[layerCountryCode];
         }
-        saturation = Math.random() * 100;
         layer.setStyle({
             stroke: false,
-            fillColor: "hsl(" + hue + ", " + saturation + "%, 50%)"
+            fillColor: "hsl(" + hue + ", " + (saturation * 100) + "%, 50%)"
         });
     })
 }
 
-highlightSelectedCountries({}, 0)
+highlightSelectedCountries(conflictData, 0)
