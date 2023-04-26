@@ -27,7 +27,7 @@ $(function() {
     let imageOverlayOptions = {opacity: 0.5};
 
     let getImageOverlay = (imageName) => {
-        return L.imageOverlay("/images/" + imageName + ".png", imageOverlayCoords, imageOverlayOptions);
+        return L.imageOverlay("./images/" + imageName + ".png", imageOverlayCoords, imageOverlayOptions);
     }
 
     let images = {
@@ -67,7 +67,7 @@ $(function() {
                 console.log("test")
                 images[this.value].addTo(map);
                 currDisplayedObj = images[this.value];
-                $("#colorbar").attr("src", "/images/" + this.value + "_colorbar.png");
+                $("#colorbar").attr("src", "./images/" + this.value + "_colorbar.png");
                 $("#colorbar").css("display", "block");
             } else {
                 $("#colorbar").css("display", "none");
