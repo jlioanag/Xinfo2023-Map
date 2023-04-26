@@ -10,13 +10,15 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 function style(feature) {
     return {
         fillColor: 'transparent',
-        weight: 2,
+        weight: 1,
         opacity: 1,
         color: 'black',
         dashArray: '7',
         fillOpacity: 0.7
     };
 }
+
+var imageOverlay
 
 L.geoJson(africa, {style: style}).addTo(map);
 
@@ -26,15 +28,20 @@ let layerDict = {};
 
 console.log(countriesLayer);
 
+// -34.83333333333334 37.583333333333336 -17.583333333333343 63.5
+// L.imageOverlay("/output.png", [[-90, -180], [90, 180]], {opacity: 0.5}).addTo(map);
+// L.imageOverlay("/output.png", [[-35, -18], [38, 64]], {opacity: 0.5}).addTo(map);
+L.imageOverlay("/output.png", [[-34.83333333333334, -17.583333333333343], [37.583333333333336, 63.5]], {opacity: 0.5}).addTo(map);
+
 // Earthquakes and tsunami markers
-disasters.forEach((dis) => {
-    L.marker([dis['lat'], dis['lon']]).addTo(map).bindPopup(dis['info']);
-});
+// disasters.forEach((dis) => {
+//     L.marker([dis['lat'], dis['lon']]).addTo(map).bindPopup(dis['info']);
+// });
 
 // Hurricane polylines
-hurricanes.forEach((hur) => {
-    L.polyline(hur['path'], {color: 'orange'}).addTo(map);
-});
+// hurricanes.forEach((hur) => {
+//     L.polyline(hur['path'], {color: 'orange'}).addTo(map);
+// });
 
 countriesLayer.eachLayer((layer) => {
     let layerID = countriesLayer.getLayerId(layer);
