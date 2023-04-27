@@ -92,4 +92,43 @@ $(function() {
             }
         }
     });
+    let knownKeys = ["lat", "long", "iso3_code"]
+    map.on('click', function(e) {
+        console.log(e.latlng);
+        let popup = L.popup().setLatLng(e.latlng).setContent('Waiting for data...').openOn(map);
+        $.ajax({
+            url: "http://localhost:5000/closestPointData",
+            type: "GET",
+            data: {
+                lat: e.latlng.lat,
+                lon: e.latlng.lng
+            },
+            success: function(data) {
+                console.log(data);
+                let result = "";
+                if (data["status"] === "none") {
+                    result = "No data available for this location.";
+                    popup.setContent(result);
+                    return;
+                }
+                data = data["data"];
+                // iterate through knownKeys
+                for (let i = 0; i < knownKeys.length; i++) {
+                    let key = knownKeys[i];
+                    result += "<b>" + key + "</b>: " + data[key] + "<br>";
+                }
+                for (let key in data) {
+                    if (knownKeys.includes(key)) {
+                        continue;
+                    }
+                    if (key === "status") {
+                        continue;
+                    }
+                    result += "<b>" + key + "</b>: " + data[key] + "<br>";
+                }
+                popup.setContent(result);
+            }
+        })
+    });
+
 });
